@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+<body>
+    <div class="whole">
+        <div class="container">
+            <div class="title">Login Form</div>
+            <form id="loginForm">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input id="email" type="text" placeholder="Email or Phone" required>
+                </div>
+                
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input id="password" type="password" placeholder="Password" required>
+                </div>
+                <div class="pass"><a href="#">Forgot Password?</a></div>
+                
+                <div class="row bottom">
+                    <input type="submit" value="Login">
+                </div>
+                <div class="signup-link">Not a member? <a href="#" id="signupLink">Signup Now</a></div>
+            </form>
+
+            <!-- Signup form -->
+            <form id="signupForm" style="display: none;">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input id="signupName" type="text" placeholder="Your Name" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-envelope"></i>
+                    <input id="signupEmail" type="email" placeholder="Email" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input id="signupPassword" type="password" placeholder="Password" required>
+                </div>
+                <div class="row bottom">
+                    <input type="submit" value="Signup">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Check login credentials
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            
+            // Assuming login validation logic here
+            if (email === "dileep57yadav@gmail.com" && password === "12345678") {
+                window.location.href = "system.html"; // Redirect to main page
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+
+        // Show signup form when "Signup Now" link is clicked
+        document.getElementById("signupLink").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("signupForm").style.display = "block";
+        });
+
+        // Handle signup form submission
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Get signup form values
+            var name = document.getElementById("signupName").value;
+            var email = document.getElementById("signupEmail").value;
+            var password = document.getElementById("signupPassword").value;
+
+            // Here you can perform signup validation and submit data to server
+            // For now, let's just log the data and redirect to main page
+            console.log("Name:", name);
+            console.log("Email:", email);
+            console.log("Password:", password);
+
+            // Redirect to main page after signup
+            window.location.href = "system.html";
+        });
+    </script>
+</body>
+</html>
